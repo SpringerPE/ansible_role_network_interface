@@ -1,6 +1,9 @@
 
 {% if item.bootproto == 'static' %}
-DEVICE={{ item.device }}
+{% if item.vlan is defined %}
+VLAN=yes
+{% endif %}
+DEVICE={{ item.device }}{% if item.vlan is defined %}.{{ item.vlan }}{% endif %}
 BOOTPROTO=none
 {% if item.address is defined %}
 IPADDR={{ item.address }}
