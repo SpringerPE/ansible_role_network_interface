@@ -3,9 +3,10 @@
   roles:
   - .
   vars:
-     device: eth0.10
-     vlan: yes
-     address: 192.168.10.100
-     netmask: 255.255.255.0
-     bootproto: static
+     network_ether_interfaces:
+     - device: eth0.10
+       vlan: yes
+       address: 192.168.10.100
+       netmask: 255.255.255.0
+       bootproto: static
       
