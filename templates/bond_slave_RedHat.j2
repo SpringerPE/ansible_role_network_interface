@@ -4,4 +4,7 @@ MASTER={{ item.0.device }}
 ONBOOT=yes
 SLAVE=yes
 USERCTL=no
-
+HOTPLUG=no
+{% if '.' in item.1 %}
+VLAN=yes
+{% end %}

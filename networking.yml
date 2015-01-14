@@ -4,9 +4,22 @@
   - .
   vars:
      network_ether_interfaces:
-     - device: eth0.10
+     - device: dummy0.10
+       hwaddr: 00:01:02:03:04:05
+       bootproto: static
+     - device: dummy0.10
+       hwaddr: 00:01:02:03:04:05
        vlan: yes
        address: 192.168.10.100
        netmask: 255.255.255.0
-       bootproto: static
+     - device: dummy0.11
+       vlan: yes
+       master: bond0
+     - device: bond0
+       address: 192.168.11.100
+       netmask: 255.255.255.0
+       bond_mode: active-backup
+       bond_miimon: 100
+       bond_slaves: [dummy0.11]
+       gateway: 192.168.11.1
       

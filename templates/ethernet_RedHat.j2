@@ -1,15 +1,13 @@
-
-{% if item.bootproto == 'static' %}
-{% if item.vlan is defined %}
-VLAN=yes
-{% endif %}
 DEVICE={{ item.device }}
+
+{% if item.hwaddr is defined %}
+HWADDR={{ item.hwaddr }}
+{% endif %}
+
+{% if item.address is defined  %}
 BOOTPROTO=none
 {% if item.address is defined %}
 IPADDR={{ item.address }}
-{% endif %}
-{% if item.onboot is defined %}
-ONBOOT={{ item.onboot }}
 {% endif %}
 {% if item.netmask is defined %}
 NETMASK={{ item.netmask }}
@@ -19,7 +17,22 @@ GATEWAY={{ item.gateway }}
 {% endif %}
 {% endif %}
 
-{% if item.bootproto == 'dhcp' %}
-DEVICE={{ item.device }}
-BOOTPROTO=dhcp
+{% if item.bootproto is defined %}
+BOOTPROTO={{ item.bootproto }}
 {% endif %}
+
+{% if item.master is defined %}
+SLAVE=yes
+MASTER={{ item.master }}
+HOTPLUG=no
+BOOTPROTO=none
+{% endif %}
+
+{% if item.onboot is defined %}
+ONBOOT={{ item.onboot }}
+{% endif %}
+
+{% if item.vlan is defined %}
+VLAN=yes
+{% endif %}
+
