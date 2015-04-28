@@ -75,9 +75,8 @@
   when: network_bond_interfaces is defined
   register: bond_result
 
-- name: Make sure the bonding module is loaded
-  modprobe: name=bonding state=present
-  when: network_bond_interfaces is defined
+- name: Add the bonding driver config
+  template: src=bonding.conf.j2 dest=/etc/modprobe.d/bonding.conf
 
 - name: Make sure the bonding module is loaded
   modprobe: name=bonding state=present
