@@ -1,5 +1,3 @@
 ---
 network_ether_interfaces: []
-network_bridge_interfaces: []
-network_bond_interfaces: []
 restart_network: True

@@ -1,9 +1,9 @@
 ---
 galaxy_info:
-  author: "Benno Joy"
+  author: "Hector Rivas, based on Benno Joy work"
   company: AnsibleWorks
   license: BSD
-  min_ansible_version: 1.4 
+  min_ansible_version: 1.4
   platforms:
    - name: EL
      versions:
@@ -14,14 +14,8 @@ galaxy_info:
       - 16
       - 17
       - 18
-   - name: Ubuntu
-     versions:
-      - precise
-      - quantal
-      - raring
-      - saucy
   categories:
     - networking
     - system
 dependencies: []
-  
+

@@ -5,7 +5,7 @@
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  
+
   config.vm.box = "base"
   config.vm.box = "chef/centos-6.5"
 
@@ -21,6 +21,7 @@ if [ ! -f /tmp/vagrant-base-packages-installed ]; then
   yum install -y libselinux-python python python-pycurl && \
   touch /tmp/vagrant-base-packages-installed
 fi
+ifconfig dummy0 hw ether 00:01:02:03:04:05
 SCRIPT
 
   config.vm.provision "shell", inline: $script
