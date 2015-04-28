@@ -1,3 +1,7 @@
-alias bond0 bonding
-options bond0 miimon=100 mode=1
+{% for item in network_ether_interfaces %}
+{% if item.device == 'bond0' or item.device == 'bond1' or item.device == 'bond2' or item.device == 'bond3' or item.device == 'bond4'  %}
+alias {{ item.device }} bonding
+options {{ item.device }} {%- if item.bond_miimon is defined %} miimon={{item.bond_miimon}}{% endif %} {%- if item.bond_mode == 'active-backup' %} mode=1{% endif %}
+{% endif %}
+{% endfor %}
 
